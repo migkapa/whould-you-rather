@@ -1,0 +1,15 @@
+.App {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.mdc-menu-surface--open {
+  display: inline-block;
+  transform: scale(1);
+  opacity: 1;
+  transform-origin: center top;
+  left: 0px;
+  top: 56px;
+}

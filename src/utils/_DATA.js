@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: 'https://api.adorable.io/avatars/285/test@test.com.png',
+    avatarURL: 'https://api.adorable.io/avatars/285/test1@test.com.png',
     answers: {
       vthrdm985a262al8qx3do: 'optionOne',
       xj352vofupe1dqz9emx13r: 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: 'https://api.adorable.io/avatars/285/test@test.com.png',
+    avatarURL: 'https://api.adorable.io/avatars/285/test2@test.com.png',
     answers: {
       xj352vofupe1dqz9emx13r: 'optionOne',
       vthrdm985a262al8qx3do: 'optionTwo',

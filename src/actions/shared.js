@@ -1,19 +1,20 @@
 import { getInitialData } from '../utils/api';
-import { recieveUsers } from '../actions/users';
-import { recieveQuestions } from '../actions/questions';
+import { receiveUsers } from './users';
+//import { recieveQuestions } from '../actions/questions';
 //import { setAuthedUser } from '../actions/authedUser';
-import { showLoading, hideLoading } from 'react-redux-loading';
+//import { showLoading, hideLoading } from 'react-redux-loading';
 
 
+// action creator for getting initial data
+// this is a thunk because it returns a function
 export function handleInitialData() {
-  // using a thunk here as we're dealing with async 
-  return (dispatch) => {
-    dispatch(showLoading());
-    return getInitialData().then(({ users, questions })=> {
-      //dispatch(setAuthedUser(id));
-      dispatch(recieveUsers( users ));
-      dispatch(recieveQuestions( questions ));
-      dispatch(hideLoading());
-    })
-  }
+  return dispatch => {
+   // dispatch(showLoading());
+
+    // because we have access to dispatch we can make asynchronous requests
+    return getInitialData().then(({ users, polls }) => {
+      dispatch(receiveUsers(users));
+      //dispatch(hideLoading());
+    });
+  };
 }

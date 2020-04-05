@@ -14,10 +14,18 @@ class App extends Component {
     return (
       <Fragment>
         <LoadingBar />
-        <LoginForm />
+        {this.props.loadingBar.default === 1 ? null : <LoginForm />}
       </Fragment>
     );
   }
 }
 
-export default connect()(App);
+
+function mapStateToProps( state ) {
+  const { loadingBar } = state;
+  return {
+    loadingBar
+  }
+}
+
+export default connect(mapStateToProps)(App);

@@ -1,9 +1,7 @@
 import { getInitialData } from '../utils/api';
 import { receiveUsers } from './users';
-import { recieveQuestions } from '../actions/questions';
-//import { setAuthedUser } from '../actions/authedUser';
+import { recieveQuestions } from './questions';
 import { showLoading, hideLoading } from 'react-redux-loading';
-
 
 // action creator for getting initial data
 // this is a thunk because it returns a function

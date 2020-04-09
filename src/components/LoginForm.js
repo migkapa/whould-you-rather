@@ -1,18 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { setAuthedUser } from '../actions/authedUser';
 
 class LoginForm extends Component {
   state = {
     showDropdown: false,
   };
 
+  // selecting the user from the dropdown
   handleSelectUser = (e) => {
-    //const value = e.target.dataset.value;
+    const value = e.target.dataset.value;
+    const { dispatch } = this.props;
+
+    dispatch(setAuthedUser(value)); // dispatching the SET_AUTHED_USER action
+
     this.setState({
       showDropdown: false,
     });
   };
 
+  // toggle the dropdown
   handleDropdown = () => {
     this.setState({
       showDropdown: !this.state.showDropdown,
@@ -20,6 +27,8 @@ class LoginForm extends Component {
   };
 
   render() {
+    const { loggedInUser } = this.props;
+
     return (
       <div className='mdc-layout-grid mdc-layout-grid--align-middle'>
         <div className='mdc-layout-grid__inner'>
@@ -33,7 +42,9 @@ class LoginForm extends Component {
                   className='mdc-select__anchor demo-width-class'
                 >
                   <i className='mdc-select__dropdown-icon'></i>
-                  <div className='mdc-select__selected-text'>Users</div>
+                  <div className='mdc-select__selected-text'>
+                    {loggedInUser ? loggedInUser.name : 'Users'}
+                  </div>
                   <span className='mdc-floating-label mdc-floating-label--float-above'>
                     Pick a user
                   </span>
@@ -52,7 +63,7 @@ class LoginForm extends Component {
                         className='mdc-list-item user-dropdown'
                         data-value={user.id}
                       >
-                        <img src={ user.avatarURL } alt={ user.name } />
+                        <img src={user.avatarURL} alt={user.name} />
                         {user.name}
                       </li>
                     ))}
@@ -69,17 +80,21 @@ class LoginForm extends Component {
 }
 
 function mapStateToProps(state) {
-  const { users } = state;
+  const { users, authedUser } = state;
+  console.log(users);
+  const loggedInUser = users[authedUser];
+
   return {
     users: Object.keys(users).map((id) => {
       const { name, avatarURL } = users[id];
 
       return {
-        id, 
-        name, 
-        avatarURL
-      }
-    })
+        id,
+        name,
+        avatarURL,
+      };
+    }),
+   loggedInUser
   };
 }
 

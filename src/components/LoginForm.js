@@ -79,9 +79,8 @@ class LoginForm extends Component {
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
   const { users, authedUser } = state;
-  console.log(users);
   const loggedInUser = users[authedUser];
 
   return {

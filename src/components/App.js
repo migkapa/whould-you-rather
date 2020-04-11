@@ -1,8 +1,12 @@
 import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import LoadingBar from 'react-redux-loading';
+import Dashboard from '../components/Dashboard';
+import TopBar from '../components/TopBar';
+import AddButton from '../components/AddButton';
 
 class App extends Component {
   componentDidMount() {
@@ -10,20 +14,41 @@ class App extends Component {
   }
 
   render() {
+    const { authedUser } = this.props;
+
     return (
-      <Fragment>
-        <LoadingBar />
-        {this.props.loadingBar.default === 1 ? null : <LoginForm />}
-      </Fragment>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          {this.props.loadingBar.default === 1 ? null : (
+            <div>
+              {authedUser === null ? (
+                <LoginForm />
+              ) : (
+                <div className='app_main'>
+                  <TopBar />
+                  <Switch>
+                    <Route path='/'>
+                      <Dashboard />
+                    </Route>
+                  </Switch>
+                  <AddButton />
+                </div>
+              )}
+            </div>
+          )}
+        </Fragment>
+      </Router>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { users, loadingBar } = state;
+  const { users, loadingBar, authedUser } = state;
   return {
     users,
     loadingBar,
+    authedUser,
   };
 }
 

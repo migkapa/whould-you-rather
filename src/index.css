@@ -7,6 +7,14 @@ body {
   );
 }
 
+.loading {
+  background-color: #0336ff;
+  height: 5px;
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+}
+
 .container {
   max-width: 1000px;
   margin: 0 auto;

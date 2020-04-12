@@ -1,7 +1,7 @@
-export const RECIEVE_QUESTIONS = 'RECIEVE_QUESTIONS';
-export const ADD_QUESTION = 'ADD_QUESTION';
 import { saveQuestion } from '../utils/api';
 import { showLoading, hideLoading } from 'react-redux-loading';
+export const RECIEVE_QUESTIONS = 'RECIEVE_QUESTIONS';
+export const ADD_QUESTION = 'ADD_QUESTION';
 
 export function recieveQuestions(questions) {
   return {
@@ -29,7 +29,7 @@ export function handleAddQuestion(question) {
     // save question to "db" first that dispatch the actions related to this
     return saveQuestion({
       ...question,
-      author: authedUser,
+      author : authedUser,
     })
       .then((question) => dispatch(addQuestion(question)))
       .then(() => dispatch(hideLoading()));

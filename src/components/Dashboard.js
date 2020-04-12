@@ -32,7 +32,7 @@ class Dashboard extends Component {
 
     return (
       <div
-        className='mdc-tab-bar container container--questions'
+        className='mdc-tab-bar container container--questions top-space'
         role='tablist'
       >
         <div className='welcome_header'>

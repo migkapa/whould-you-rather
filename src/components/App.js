@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
@@ -7,6 +7,7 @@ import LoadingBar from 'react-redux-loading';
 import Dashboard from '../components/Dashboard';
 import TopBar from '../components/TopBar';
 import AddButton from '../components/AddButton';
+import AddQuestion from '../components/AddQuestion';
 
 class App extends Component {
   componentDidMount() {
@@ -27,12 +28,13 @@ class App extends Component {
               ) : (
                 <div className='app_main'>
                   <TopBar />
-                  <Switch>
-                    <Route path='/'>
-                      <Dashboard />
-                    </Route>
-                  </Switch>
-                  <AddButton />
+                  <Route exact path='/'>
+                    <Dashboard />
+                    <AddButton />
+                  </Route>
+                  <Route path='/add'>
+                    <AddQuestion />
+                  </Route>
                 </div>
               )}
             </div>

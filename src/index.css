@@ -14,6 +14,16 @@ body {
 
 .container--questions {
   max-width: 640px;
+  margin: 0 auto;
+}
+
+.blue-bg,
+.mdc-button--raised:not(:disabled),
+.mdc-button--unelevated:not(:disabled) {
+  background-color: #0336ff;
+}
+
+.top-space {
   margin-top: 100px;
 }
 
@@ -54,6 +64,8 @@ body {
 
 .mdc-top-app-bar {
   top: 0;
+  color: #000;
+  background: #ffde03;
 }
 
 .welcome_header {
@@ -70,6 +82,7 @@ body {
   height: 30px;
   border-radius: 50%;
   margin-right: 10px;
+  border: 1px solid;
 }
 
 .loggedIn .separator {
@@ -80,4 +93,22 @@ body {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  /* background-color: #ff0266; */
+  background-color: #0336ff;
+}
+
+.question-form .mdc-text-field {
+  width: 100%;
+}
+
+.separator-or {
+  font-size: 30px;
+  text-align: center;
+  margin: 20px 0;
+}
+
+.submit-wrapper {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
 }

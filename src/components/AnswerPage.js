@@ -58,27 +58,55 @@ class AnswerPage extends Component {
   };
 
   render() {
-    const { options, authorData} = this.props;
+    const { options, authorData, givenAnswer, answered } = this.props;
+
+    console.log(authorData.name);
 
     return (
       <div className='answer-container top-space container--questions'>
         <div>
-          <div className='answer-header'>
-            <img width='70' height='70' className='author-img' src={authorData.avatarURL} alt={authorData.name} /> 
-            <p className='mdc-typography--headline4'>
-              <strong>{authorData.name}</strong> would like to know if you
-            </p>
-            <p className='mdc-typography--headline4'>would rather be:</p>
-          </div>
-
-          <form onSubmit={this.handleSubmit}>
-            {Object.keys(options).map((id) => this.renderOption(options[id]))}
-            <div className='submit-wrapper'>
-              <button className='mdc-button mdc-button--raised mdc-fab--extended mdc-ripple-upgraded blue-bg'>
-                <span className='mdc-button__ripple'></span> Submit
-              </button>
+          {answered === true ? null : (
+            <div className='answer-header'>
+              <img
+                width='70'
+                height='70'
+                className='author-img'
+                src={authorData.avatarURL}
+                alt={authorData.name}
+              />
+              <p className='mdc-typography--headline4'>
+                <strong>{authorData.name}</strong> would like to know if
+              </p>
+              <p className='mdc-typography--headline4'>you would rather:</p>
             </div>
-          </form>
+          )}
+          {answered === true ? (
+            <div className='answer-statistic'>
+              <p className='mdc-typography--headline4'>
+                You answered that you would rather
+              </p>
+              <p className='mdc-typography--headline4'>
+                <strong>{givenAnswer.text}</strong> than{' '}
+                 <strong>
+                  {givenAnswer.name === 'optionOne'
+                    ? options['optionTwo'].text
+                    : options['optionOne'].text}
+                </strong>
+              </p>
+              <p className='mdc-typography--subtitle1'>
+                This question was created by: {authorData.name}
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={this.handleSubmit}>
+              {Object.keys(options).map((id) => this.renderOption(options[id]))}
+              <div className='submit-wrapper'>
+                <button className='mdc-button mdc-button--raised mdc-fab--extended mdc-ripple-upgraded blue-bg'>
+                  <span className='mdc-button__ripple'></span> Submit
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     );
@@ -87,19 +115,29 @@ class AnswerPage extends Component {
 
 function mapStatsToProps(state, { match }) {
   const { authedUser, questions, users } = state;
-  const { id } =  match.params;
+  const { id } = match.params;
   const options = {
     optionOne: { id: 'optionOne', text: questions[id].optionOne.text },
     optionTwo: { id: 'optionTwo', text: questions[id].optionTwo.text },
   };
 
   const authorData = users[questions[id].author];
+  const answered = Object.keys(users[authedUser].answers).includes(id);
+  const givenAnswerName = users[authedUser].answers[id];
+  const givenAnswerText = givenAnswerName
+    ? questions[id][givenAnswerName].text
+    : null;
 
   return {
     id,
     authedUser,
     authorData,
     options,
+    answered,
+    givenAnswer: {
+      name: givenAnswerName,
+      text: givenAnswerText,
+    },
   };
 }
 

@@ -8,6 +8,7 @@ import Dashboard from '../components/Dashboard';
 import TopBar from '../components/TopBar';
 import AddButton from '../components/AddButton';
 import AddQuestion from '../components/AddQuestion';
+import AnswerPage from '../components/AnswerPage';
 
 class App extends Component {
   componentDidMount() {
@@ -26,7 +27,7 @@ class App extends Component {
             updateTime={50}
             maxProgress={100}
             progressIncrease={10}
-           />
+          />
           <div className='app_main'>
             {authedUser === null ? (
               this.props.loading === true ? null : (
@@ -39,9 +40,8 @@ class App extends Component {
                   <Dashboard />
                   <AddButton />
                 </Route>
-                <Route path='/add'>
-                  <AddQuestion />
-                </Route>
+                <Route path='/add' component={AddQuestion} />
+                <Route path='/questions/:id' component={AnswerPage} />
               </div>
             )}
           </div>

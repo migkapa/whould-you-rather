@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class Dashboard extends Component {
   state = {
@@ -96,14 +97,15 @@ class Dashboard extends Component {
         <ul className='mdc-list answers-list'>
           {list.map((question) => (
             <li key={question.id} className='mdc-list-item'>
+              <Link className='cover-link' to={`questions/${question.id}`} />
               <img
                 src={this.getAuthedData(question.author, users).avatarURL}
                 alt=''
               />
-
               <span className='mdc-list-item__text mdc-typography--headline6'>
                 {question.optionOne.text} or ...
               </span>
+
               <button className='mdc-button'>
                 <span className='mdc-button__ripple'></span> View
               </button>

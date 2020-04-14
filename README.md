@@ -7,6 +7,11 @@ to install dependencies. After that just "yarn start"
 * clone the Project - `https://github.com/migkapa/whould-you-rather.git`
 * install the dependencies - `npm install`
 
+
+## Hosted Project
+
+[hhttps://mk-would-you-rather.netlify.com/](hhttps://mk-would-you-rather.netlify.com/)
+
 ## Contributing
 
 Because this is a code-along project I will not be accepting pull requests.

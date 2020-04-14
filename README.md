@@ -10,7 +10,7 @@ to install dependencies. After that just "yarn start"
 
 ## Hosted Project
 
-[hhttps://mk-would-you-rather.netlify.com/](hhttps://mk-would-you-rather.netlify.com/)
+[https://mk-would-you-rather.netlify.com/](https://mk-would-you-rather.netlify.com/)
 
 ## Contributing
 

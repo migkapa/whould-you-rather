@@ -52,6 +52,32 @@ body {
   top: 56px;
 }
 
+.header__nav {
+  margin-left: 40px;
+}
+
+.header__nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header__nav-link {
+  line-height: 64px;
+  padding: 0 16px;
+  font-size: 18px;
+  color: #000;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.25s ease-in-out;
+}
+
+.header__nav-link:hover, .header__nav-link.selected {
+  color: #0336ff;
+  transition: color 0.25s ease-in-out;
+}
+
 .user-dropdown img {
   width: 30px;
   height: 30px;
@@ -166,15 +192,15 @@ body {
 
 .answer-container form .mdc-form-field:first-child::after {
   content: 'or';
-    display: block;
-    /* position: absolute; */
-    flex: 0 100%;
-    text-align: center;
-    font-size: 20px;
-    margin: 15px 0;
-    font-weight: 700;
-    font-style: italic;
-    color: #0336ff;
+  display: block;
+  /* position: absolute; */
+  flex: 0 100%;
+  text-align: center;
+  font-size: 20px;
+  margin: 15px 0;
+  font-weight: 700;
+  font-style: italic;
+  color: #0336ff;
 }
 
 .answer-container form .mdc-form-field {
@@ -188,7 +214,7 @@ body {
   margin-top: 40px;
 }
 
-.answer-container .mdc-form-field>label {
+.answer-container .mdc-form-field > label {
   margin-left: 10px;
   margin-right: inherit;
 }
@@ -200,4 +226,12 @@ body {
 
 .answer-statistic .mdc-typography--subtitle1 {
   margin-top: 8px;
+}
+
+.questionstats {
+  margin-top: 30px;
+}
+
+.secondary-color {
+  color: var(--mdc-theme-secondary);
 }

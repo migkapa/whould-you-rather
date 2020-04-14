@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAnswerQuestion } from '../actions/questions';
+import QuestionStats from '../components/QestionStats';
 
 class AnswerPage extends Component {
   state = {
@@ -58,7 +59,7 @@ class AnswerPage extends Component {
   };
 
   render() {
-    const { options, authorData, givenAnswer, answered } = this.props;
+    const { options, authorData, givenAnswer, id, answered } = this.props;
 
     console.log(authorData.name);
 
@@ -87,7 +88,7 @@ class AnswerPage extends Component {
               </p>
               <p className='mdc-typography--headline4'>
                 <strong>{givenAnswer.text}</strong> than{' '}
-                 <strong>
+                <strong>
                   {givenAnswer.name === 'optionOne'
                     ? options['optionTwo'].text
                     : options['optionOne'].text}
@@ -96,6 +97,7 @@ class AnswerPage extends Component {
               <p className='mdc-typography--subtitle1'>
                 This question was created by: {authorData.name}
               </p>
+              <QuestionStats id={id} options={options} givenAnswer={givenAnswer} />
             </div>
           ) : (
             <form onSubmit={this.handleSubmit}>

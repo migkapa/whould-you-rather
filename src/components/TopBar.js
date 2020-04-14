@@ -1,14 +1,38 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 function TobBar(props) {
- const  { authedUserData } = props;
+  const { authedUserData } = props;
 
   return (
     <header className='mdc-top-app-bar mdc-top-app-bar--fixed'>
       <div className='mdc-top-app-bar__row'>
         <section className='mdc-top-app-bar__section mdc-top-app-bar__section--align-start'>
           <span className='mdc-top-app-bar__title'>Would you Rather?</span>
+          <nav className='header__nav'>
+            <ul className='app-menu header__nav-list header__nav-list--selected'>
+              <li className='header__nav-item'>
+                <NavLink
+                  className='header__nav-link'
+                  exact
+                  to='/'
+                  activeClassName='selected'
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className='header__nav-link'
+                  to='/leaderboard'
+                  activeClassName='selected'
+                >
+                  Leaderboard
+                </NavLink>
+              </li>
+            </ul>
+          </nav>
         </section>
         <section className='mdc-top-app-bar__section mdc-top-app-bar__section--align-end'>
           <div className='loggedIn mdc-ripple-upgraded'>
@@ -25,13 +49,12 @@ function TobBar(props) {
   );
 }
 
-function mapStateToProps( { authedUser, users } ) {
+function mapStateToProps({ authedUser, users }) {
   const authedUserData = users[authedUser];
 
   return {
-    authedUserData
-  }
-
+    authedUserData,
+  };
 }
 
 export default connect(mapStateToProps)(TobBar);

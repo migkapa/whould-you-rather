@@ -61,8 +61,6 @@ class AnswerPage extends Component {
   render() {
     const { options, authorData, givenAnswer, id, answered } = this.props;
 
-    console.log(authorData.name);
-
     return (
       <div className='answer-container top-space container--questions'>
         <div>

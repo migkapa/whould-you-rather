@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 function QuestionStats(props) {
   const { totalVotes, percentageOne, givenAnswer, options } = props;
-  console.log('Props: ', givenAnswer.name);
   const theOtherOption =
     givenAnswer.name === 'optionOne'
       ? options['optionTwo'].text
@@ -22,9 +21,8 @@ function QuestionStats(props) {
       </p>
       <p className='mdc-typography--headline5'>
         <strong>{percentageOne.toFixed()}%</strong> of them have voted to{' '}
-        {givenAnswer.text} and{' '}
-        <strong>{100 - percentageOne.toFixed()}%</strong> of them to{' '}
-        {theOtherOption}.
+        {givenAnswer.text} and <strong>{100 - percentageOne.toFixed()}%</strong>{' '}
+        of them to {theOtherOption}.
       </p>
     </div>
   );
@@ -37,7 +35,6 @@ function mapStateToProps(state, { id, givenAnswer, options }) {
     question.optionOne.votes.length + question.optionTwo.votes.length;
   const percentageOne = (question.optionOne.votes.length / totalVotes) * 100;
 
-  console.log(givenAnswer);
   return {
     totalVotes,
     percentageOne,

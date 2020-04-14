@@ -29,8 +29,6 @@ class Dashboard extends Component {
     const { showAnswered } = this.state;
     const list = showAnswered === true ? answered : unanswered;
 
-    console.log(users);
-
     return (
       <div
         className='mdc-tab-bar container container--questions top-space'

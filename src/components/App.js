@@ -9,6 +9,7 @@ import TopBar from '../components/TopBar';
 import AddButton from '../components/AddButton';
 import AddQuestion from '../components/AddQuestion';
 import AnswerPage from '../components/AnswerPage';
+import LeaderBoard from '../components/LeaderBoard';
 
 class App extends Component {
   componentDidMount() {
@@ -42,6 +43,10 @@ class App extends Component {
                 </Route>
                 <Route path='/add' component={AddQuestion} />
                 <Route path='/questions/:id' component={AnswerPage} />
+                <Route path='/leaderboard'>
+                  <LeaderBoard />
+                  <AddButton />
+                </Route>
               </div>
             )}
           </div>

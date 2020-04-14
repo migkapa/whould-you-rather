@@ -19,7 +19,6 @@ class App extends Component {
 
   render() {
     const { authedUser } = this.props;
-    //this.props.loading === true;
     return (
       <Router>
         <Fragment>

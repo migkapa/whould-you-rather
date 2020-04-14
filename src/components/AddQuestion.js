@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
 import { Redirect } from 'react-router-dom';
 
-
 class AddQuestion extends Component {
   state = {
     optionOneText: '',
@@ -34,14 +33,13 @@ class AddQuestion extends Component {
     this.setState(() => ({
       toHome: true,
     }));
-
   };
 
   render() {
     const { toHome } = this.state;
 
-    if(toHome === true) {
-      return <Redirect to='/' />
+    if (toHome === true) {
+      return <Redirect to='/' />;
     }
 
     return (

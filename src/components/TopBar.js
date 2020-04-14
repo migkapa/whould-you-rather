@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink, useHistory} from 'react-router-dom';
 import { logoutAuthedUser } from '../actions/authedUser';
 
 function TobBar(props) {
- // const [gohome, setHome] = useState(false);
   const { dispatch, authedUserData } = props;
   const history = useHistory();
 

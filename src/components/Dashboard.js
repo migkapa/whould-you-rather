@@ -122,7 +122,7 @@ function mapStateToProps(state) {
   const answers = users[authedUser].answers;
 
   // maping form authenticated users' answers and
-  // sorting with the timstamp
+  // sorting with the timestamp
   const answered = Object.keys(answers)
     .map((id) => questions[id])
     .sort((a, b) => b.timestamp - a.timestamp);

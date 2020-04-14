@@ -97,7 +97,11 @@ class AnswerPage extends Component {
               <p className='mdc-typography--subtitle1'>
                 This question was created by: {authorData.name}
               </p>
-              <QuestionStats id={id} options={options} givenAnswer={givenAnswer} />
+              <QuestionStats
+                id={id}
+                options={options}
+                givenAnswer={givenAnswer}
+              />
             </div>
           ) : (
             <form onSubmit={this.handleSubmit}>

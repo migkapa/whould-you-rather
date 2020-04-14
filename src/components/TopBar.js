@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory} from 'react-router-dom';
+import { logoutAuthedUser } from '../actions/authedUser';
 
 function TobBar(props) {
-  const { authedUserData } = props;
+ // const [gohome, setHome] = useState(false);
+  const { dispatch, authedUserData } = props;
+  const history = useHistory();
+
+  function handleLogout() {
+    dispatch(logoutAuthedUser(null));
+    history.push('/')
+  }
 
   return (
     <header className='mdc-top-app-bar mdc-top-app-bar--fixed'>
@@ -39,7 +47,10 @@ function TobBar(props) {
             <img src={authedUserData.avatarURL} alt={authedUserData.name} />
             {authedUserData.name}
             <span className='separator'>|</span>
-            <button className='mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded'>
+            <button
+              onClick={handleLogout}
+              className='mdc-icon-button material-icons mdc-top-app-bar__action-item--unbounded'
+            >
               logout
             </button>
           </div>
